@@ -1,0 +1,8 @@
+{
+  "name": "210830webpack-study",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ayakayakak/webpack-study.git",
+  "author": "taniguchi <bayakau.tka@gmail.com>",
+  "license": "MIT"
+}
