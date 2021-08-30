@@ -4,5 +4,9 @@
   "main": "index.js",
   "repository": "git@github.com:ayakayakak/webpack-study.git",
   "author": "taniguchi <bayakau.tka@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
+  }
 }
