@@ -11,8 +11,26 @@ module.exports = {
   // },
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: 'bundle.js'
+    // filename: 'bundle.js'
     /* entryをオブジェクトで指定した場合、[name]にプロパティ名が入る*/
-    // filename: '[name].bundle.js'
+    filename: '[name].bundle.js'
+  },
+  
+  // sass, css用設定
+  module: {
+    rules: [
+      {
+        // 対象となる拡張子
+        test: /\.scss$/,
+        // どのloaderを使うのか
+        use: [
+          // 下から順番に実行される！
+          // sassがcssにコンパイルされる→jsファイルにバンドルされる→バンドルされたものがブラウザに配信された後にhtmlにstyleタグとして注入される
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      }
+    ]
   }
 }
