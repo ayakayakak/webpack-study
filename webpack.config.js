@@ -25,9 +25,10 @@ module.exports = {
         // どのloaderを使うのか
         use: [
           // 下から順番に実行される！
-          // sassがcssにコンパイルされる→jsファイルにバンドルされる→バンドルされたものがブラウザに配信された後にhtmlにstyleタグとして注入される
+          // sassがcssにコンパイルされる→prefixを自動付与→jsファイルにバンドルされる→バンドルされたものがブラウザに配信された後にhtmlにstyleタグとして注入される
           'style-loader',
           'css-loader',
+          'postcss-loader',
           'sass-loader'
         ]
       }
