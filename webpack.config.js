@@ -15,10 +15,10 @@ module.exports = {
     path: path.resolve(__dirname, 'public'),
     // filename: 'bundle.js'
     /* entryをオブジェクトで指定した場合、[name]にプロパティ名が入る*/
-    filename: '[name].bundle.js'
+    filename: '[name].bundle.js',
+    assetModuleFilename: 'images/[contenthash].[ext]'
   },
   
-  // sass, css用設定
   module: {
     rules: [
       // ES6の記法をES5の記法に変えてくれる（アロー関数など）
@@ -66,7 +66,11 @@ module.exports = {
           'sass-loader'
         ]
       },
-      // 画像ファイル用
+      /* 
+      画像ファイル用。
+      ただ、webpack ver5からAsset Modulesがraw-loader, url-loader, file-loaderの代わりに導入されて、自動で実行されるようになっているので、
+      下記の設定をしてしまうと画像が二重で出力されてしまう。
+      output.assetModuleFilenameに希望するディレクトリ名や名前を設定すればok。
       {
         test: /\.(jpe?g|png|svg)$/,
         use: [
@@ -78,7 +82,7 @@ module.exports = {
               // public/images配下に画像が格納される
               outputPath: 'images',
               // 画像をCDNに配置している場合などはpublicPathにそのURLを指定する
-              publicPath: 'http://127.0.0.1:5500/images'
+              publicPath: 'images'
             }
           }
         ]
