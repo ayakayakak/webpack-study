@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
@@ -89,6 +90,10 @@ module.exports = {
     // scssファイルに変更がなかった場合ブラウザ側でキャッシュを使ってくれるので、prodでは設定を推奨。
     new MiniCssExtractPlugin({
       filename: '[name].css'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      inject: 'body'
     })
   ]
 }
