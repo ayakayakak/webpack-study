@@ -23,8 +23,27 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        use: [
+          // eslintでチェック→babelでトランスパイルの順
+          "babel-loader",
+          "eslint-loader"
+        ]
       },
+      /*
+      下記でもeslint→babelの順で実行される
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
+      },
+      {
+        // .js拡張子ファイルに対しては必ず一番に実行される
+        endorce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader"
+      },
+      */
       {
         // 対象となる拡張子
         test: /\.scss$/,

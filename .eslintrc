@@ -1,0 +1,9 @@
+{
+  // babelと連携するために絶対必要
+  "parser": "babel-eslint",
+  "extends": "eslint:recommended",
+  "env": {
+    "es2017": true,
+    "browser": true
+  }
+}
