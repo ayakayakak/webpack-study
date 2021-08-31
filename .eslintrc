@@ -25,6 +25,6 @@
   "rules": {
     "no-undef": 0,
     // level, string option, object optionの順で設定
-    "semi": ["error", "always", {"omitLastInOneLineBlock": true}]
+    "semi": ["error", "never"]
   }
 }

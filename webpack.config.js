@@ -1,3 +1,4 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
 module.exports = {
@@ -55,7 +56,10 @@ module.exports = {
         use: [
           // 下から順番に実行される！
           // sassがcssにコンパイルされる→prefixを自動付与→jsファイルにバンドルされる→バンドルされたものがブラウザに配信された後にhtmlにstyleタグとして注入される
-          'style-loader',
+
+          // MiniCssExtractPluginを使う場合はstyle-loaderではなくMiniCssExtractPlugin.loaderを使う
+          // 'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
           'sass-loader'
@@ -79,5 +83,12 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    // 普通ならjsファイルにバンドルされるはずのscssファイルをcssファイルとして書き出してくれる。
+    // scssファイルに変更がなかった場合ブラウザ側でキャッシュを使ってくれるので、prodでは設定を推奨。
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    })
+  ]
 }
