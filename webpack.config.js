@@ -86,6 +86,15 @@ module.exports = {
             }
           }
         ]
+      },
+      */
+      {
+        // html-loaderを使うにはHtmlWebpackPluginの設定が必要
+        // それか、エントリーポイントに指定しているjsファイル内でhtmlファイルをimportしておけばok
+        test: /\html$/,
+        use: [
+          'html-loader'
+        ]
       }
     ]
   },
