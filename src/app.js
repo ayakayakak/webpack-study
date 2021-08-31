@@ -1,4 +1,9 @@
 import './sub'
 import './app.scss'
 
-console.log("app")
+
+const init = () => {
+  console.log("app")
+}
+
+init()

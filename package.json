@@ -6,7 +6,10 @@
   "author": "taniguchi <bayakau.tka@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
     "autoprefixer": "^10.3.3",
+    "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
     "file-loader": "^6.2.0",
     "postcss-loader": "^6.1.1",

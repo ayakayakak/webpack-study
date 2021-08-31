@@ -19,6 +19,12 @@ module.exports = {
   // sass, css用設定
   module: {
     rules: [
+      // ES6の記法をES5の記法に変えてくれる（アロー関数など）
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
       {
         // 対象となる拡張子
         test: /\.scss$/,
