@@ -41,7 +41,11 @@ module.exports = {
         endorce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "eslint-loader"
+        loader: "eslint-loader",
+        options: {
+          // --fixが毎回つけて実行される
+          fix: true
+        }
       },
       */
       {

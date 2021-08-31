@@ -1,9 +1,30 @@
 {
-  // babelと連携するために絶対必要
-  "parser": "babel-eslint",
-  "extends": "eslint:recommended",
   "env": {
+    // それぞれの環境であるべきグローバルオブジェクトがある前提でチェックが行われる。
+    // 例えばbrowserではwindowオブジェクトがグローバルオブジェクトとして存在する。
+    // https://eslint.org/docs/user-guide/configuring/language-options#specifying-environments
     "es2017": true,
     "browser": true
+  },
+  // babelと連携するために絶対必要
+  "parser": "babel-eslint",
+  "parserOptions": {
+    // envを指定しているので自動的に設定されるので書かなくてもok
+    "echmaVersion": 2017,
+    // module単位でjsを管理している場合
+    "sourceType": "module" // デフォルトは"script"
+  },
+  // eslintおすすめのチェックをしている
+  // https://eslint.org/docs/rules/
+  "extends": "eslint:recommended",
+  // グローバルオブジェクトを明示したい場合
+  "globals": {
+    "jQuery": "readonly", // or "writable"
+    "$": "readonly"
+  },
+  "rules": {
+    "no-undef": 0,
+    // level, string option, object optionの順で設定
+    "semi": ["error", "always", {"omitLastInOneLineBlock": true}]
   }
 }
