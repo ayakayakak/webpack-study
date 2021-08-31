@@ -5,6 +5,11 @@
   "repository": "git@github.com:ayakayakak/webpack-study.git",
   "author": "taniguchi <bayakau.tka@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "cleanup": "rimraf ./public",
+    "dev": "yarn cleanup && webpack --config ./webpack.dev.js",
+    "prod": "yarn cleanup && webpack --config ./webpack.prod.js"
+  },
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
@@ -25,6 +30,10 @@
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
     "webpack": "^5.51.1",
-    "webpack-cli": "^4.8.0"
+    "webpack-cli": "^4.8.0",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "rimraf": "^3.0.2"
   }
 }
