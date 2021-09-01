@@ -7,7 +7,9 @@
   "license": "MIT",
   "scripts": {
     "cleanup": "rimraf ./public",
-    "dev": "yarn cleanup && webpack --config ./webpack.dev.js",
+    "dev": "yarn webpack:dev && yarn webpack:server",
+    "webpack:server": "webpack serve --config ./webpack.dev.js",
+    "webpack:dev": "yarn cleanup && webpack --config ./webpack.dev.js",
     "prod": "yarn cleanup && webpack --config ./webpack.prod.js"
   },
   "devDependencies": {
@@ -33,6 +35,7 @@
     "terser-webpack-plugin": "^5.1.4",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.0",
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
