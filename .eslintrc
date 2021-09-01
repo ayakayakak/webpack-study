@@ -20,7 +20,8 @@
   // グローバルオブジェクトを明示したい場合
   "globals": {
     "jQuery": "readonly", // or "writable"
-    "$": "readonly"
+    "$": "readonly",
+    "utils": "readonly"
   },
   "rules": {
     "no-undef": 0,

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_210830webpack_study=self.webpackChunk_210830webpack_study||[]).push([[493],{80754:(e,s,c)=>{c.r(s),c.d(s,{default:()=>u});const u={log:function(e){console.log(e)}}}}]);

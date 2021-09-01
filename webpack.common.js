@@ -14,7 +14,9 @@ module.exports = ({outputFile, assetFile}) => ({
     // filename: 'bundle.js'
     /* entryをオブジェクトで指定した場合、[name]にプロパティ名が入る*/
     filename: `${outputFile}.js`,
-    assetModuleFilename: `images/${assetFile}[ext]`
+    assetModuleFilename: `images/${assetFile}[ext]`,
+    // splitChunksのファイル名を指定
+    chunkFilename: `${outputFile}.js`,
   },
   
   module: {
@@ -107,6 +109,31 @@ module.exports = ({outputFile, assetFile}) => ({
       // 名前解決したい変数: importするモジュール名
       jQuery: 'jquery',
       $: 'jquery',
+      utils: [path.resolve(__dirname, 'src/utils'), 'default']
     })
-  ]
+  ],
+  optimization: {
+    // バンドル後のファイルを適切に分割することで、修正が入ったファイルだけサーバーに取りにいく、残りはキャッシュを使うことができるので、描画に無駄な時間がかからなくなる
+    splitChunks: {
+      // ダイナミックインポート（非同期でimportするので、初期描画に必要ないものはこうしておくと表示速度が上がる）も普通のインポートも全部分ける
+      chunks: 'all',
+      // ダイナミックインポートのみ分ける
+      // chunks: 'async',
+      // 最低限分割するバイト数
+      minSize: 0,
+      cacheGroups: {
+        vendors: {
+          // vendors.jsに共通モジュール（今回だとjQuery）が分割される
+          name: "vendors",
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+        },
+        utils: {
+          name: "utils",
+          test: /src[\\/]utils/,
+        },
+        default: false
+      },
+    }
+  }
 })
