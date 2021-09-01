@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { ProvidePlugin } = require('webpack')
 const path = require('path')
 
 module.exports = ({outputFile, assetFile}) => ({
@@ -100,6 +101,12 @@ module.exports = ({outputFile, assetFile}) => ({
     // scssファイルに変更がなかった場合ブラウザ側でキャッシュを使ってくれるので、prodでは設定を推奨。
     new MiniCssExtractPlugin({
       filename: `${outputFile}.css`
+    }),
+    new ProvidePlugin({
+      // 各ファイルにimportを書かなくても全体で共通して使えるようになる
+      // 名前解決したい変数: importするモジュール名
+      jQuery: 'jquery',
+      $: 'jquery',
     })
   ]
 })
